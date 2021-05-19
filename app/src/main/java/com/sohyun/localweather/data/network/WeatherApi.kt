@@ -10,20 +10,22 @@ interface WeatherApi {
     @GET(SUB_SEARCH_LOCATION)
     suspend fun searchLocation(
         @Query(SCHEMA_QUERY) query: String,
-    ): LocationResponse
+    ): List<LocationResponse>
 
     @GET(SUB_SEARCH_WEATHER)
     suspend fun searchWeather(
-        @Path(SCHEMA_PATH) woeid: Int,
+        @Path(SCHEMA_PATH_WOEID) woeid: Int,
+        @Path(SCHEMA_PATH_DATE) date: String,
     ): WeatherResponse
 
     companion object {
         const val WEATHER_BASE_URL = "https://www.metaweather.com/"
 
         const val SUB_SEARCH_LOCATION = "api/location/search/"
-        const val SUB_SEARCH_WEATHER = "/api/location/{woeid}/"
+        const val SUB_SEARCH_WEATHER = "api/location/{woeid}/{date}/"
 
         const val SCHEMA_QUERY = "query"
-        const val SCHEMA_PATH = "woeid"
+        const val SCHEMA_PATH_WOEID = "woeid"
+        const val SCHEMA_PATH_DATE = "date"
     }
 }
