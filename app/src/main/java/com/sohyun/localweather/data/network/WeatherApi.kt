@@ -16,7 +16,7 @@ interface WeatherApi {
     suspend fun searchWeather(
         @Path(SCHEMA_PATH_WOEID) woeid: Int,
         @Path(SCHEMA_PATH_DATE) date: String,
-    ): WeatherResponse
+    ): List<WeatherResponse.ConsolidatedWeather>
 
     companion object {
         const val WEATHER_BASE_URL = "https://www.metaweather.com/"

@@ -37,7 +37,7 @@ data class WeatherResponse(
     )
     data class ConsolidatedWeather(
         @SerializedName("id")
-        val id: Int,
+        val id: Long,
         @SerializedName("applicable_date")
         val applicableDate: Date,
         @SerializedName("weather_state_name")
@@ -51,16 +51,16 @@ data class WeatherResponse(
         @SerializedName("wind_direction_compass")
         val windDirectionCompass: String,
         @SerializedName("min_temp")
-        val minTemp: Int,
+        val minTemp: Double,
         @SerializedName("max_temp")
-        val maxTemp: Int,
+        val maxTemp: Double,
         @SerializedName("the_temp")
-        val theTemp: Int,
+        val theTemp: Double,
         @SerializedName("air_pressure")
         val airPressure: Float,
         @SerializedName("humidity")
         val humidity: Float,
-        @SerializedName("humidity")
+        @SerializedName("visibility")
         val visibility: Float,
         @SerializedName("predictability")
         val predictability: Int

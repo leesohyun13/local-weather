@@ -12,6 +12,6 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun searchLocation(query: String): NetworkStatus<List<LocationResponse>> =
             safeApiCall { weatherApi.searchLocation(query = query) }
 
-    override suspend fun getWeather(woeid: Int, date: String): NetworkStatus<WeatherResponse> =
+    override suspend fun getWeather(woeid: Int, date: String): NetworkStatus<List<WeatherResponse.ConsolidatedWeather>> =
             safeApiCall { weatherApi.searchWeather(woeid = woeid, date = date) }
 }
