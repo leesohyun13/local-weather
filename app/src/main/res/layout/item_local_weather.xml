@@ -52,7 +52,7 @@
             <TextView
                 android:id="@+id/today_temp"
                 style="@style/Weather.TextView.Temp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="@id/today_weather_state_name"
                 app:layout_constraintTop_toBottomOf="@id/today_weather_state_name" />
 
