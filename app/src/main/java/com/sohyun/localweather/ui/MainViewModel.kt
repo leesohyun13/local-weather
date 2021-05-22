@@ -36,7 +36,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun searchWeather() {
+    fun searchWeather() {
+        isLoading.value = true
         val weatherItems = arrayListOf<LocalWeather>()
         viewModelScope.launch {
             locations.value?.let {

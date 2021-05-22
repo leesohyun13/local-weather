@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sohyun.localweather.R
 import com.sohyun.localweather.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -21,14 +23,33 @@ class MainActivity : AppCompatActivity() {
         binding.viewmodel = mainViewModel
         binding.lifecycleOwner = this@MainActivity
 
-        binding.weatherRecycerview.run {
-            localWeatherAdapter = LocalWeatherAdapter(this@MainActivity)
-            adapter = localWeatherAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
+        with(binding) {
+            weatherRecycerview.run {
+                localWeatherAdapter = LocalWeatherAdapter(this@MainActivity)
+                adapter = localWeatherAdapter
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                binding.weatherRecycerview.addItemDecoration(
+                    DividerItemDecoration(
+                        binding.weatherRecycerview.context,
+                        DividerItemDecoration.VERTICAL
+                    )
+                )
+            }
+
+            weatherRefreshLayout.setOnRefreshListener {
+                mainViewModel.searchWeather()
+            }
         }
 
+        addObservers()
+    }
+
+    private fun addObservers() {
         mainViewModel.getLocalWeather().observe(this, { weathers ->
-            weathers?.let { localWeatherAdapter.setItemAll(weathers) }
+            weathers?.let {
+                localWeatherAdapter.setItemAll(weathers)
+                binding.weatherRefreshLayout.isRefreshing = false
+            }
         })
     }
 }
