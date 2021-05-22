@@ -28,12 +28,11 @@ class MainActivity : AppCompatActivity() {
                 localWeatherAdapter = LocalWeatherAdapter(this@MainActivity)
                 adapter = localWeatherAdapter
                 layoutManager = LinearLayoutManager(this@MainActivity)
-                binding.weatherRecycerview.addItemDecoration(
-                    DividerItemDecoration(
-                        binding.weatherRecycerview.context,
-                        DividerItemDecoration.VERTICAL
-                    )
-                )
+                weatherRecycerview.addItemDecoration(DividerItemDecoration(
+                    binding.weatherRecycerview.context,
+                    DividerItemDecoration.VERTICAL).apply {
+                    context.getDrawable(R.drawable.background_line)?.let { setDrawable(it) }
+                })
             }
 
             weatherRefreshLayout.setOnRefreshListener {
