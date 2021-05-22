@@ -87,8 +87,8 @@
             <TextView
                 android:id="@+id/tomorrow_weather_state_name"
                 style="@style/Weather.TextView.WeatherStateName"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintLeft_toRightOf="@id/tomorrow_weather_state_abbr"
                 app:layout_constraintTop_toTopOf="parent" />
 
