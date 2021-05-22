@@ -90,7 +90,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintLeft_toRightOf="@id/tomorrow_weather_state_abbr"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/tomorrow_weather_state_abbr" />
 
             <TextView
                 android:id="@+id/tomorrow_temp"
